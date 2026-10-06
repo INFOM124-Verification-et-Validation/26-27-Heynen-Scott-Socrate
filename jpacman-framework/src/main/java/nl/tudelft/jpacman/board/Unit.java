@@ -55,9 +55,9 @@ public abstract class Unit {
     }
 
     /**
-     * Returns whether this unit is currently on  a square.
+     * Returns whether this unit is currently on a square.
      *
-     * @return True iff the unit is occupying a square at the moment.
+     * @return True if the unit is occupying a square at the moment.
      */
     public boolean hasSquare() {
         return square != null;

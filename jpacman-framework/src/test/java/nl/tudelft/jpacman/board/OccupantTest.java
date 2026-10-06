@@ -1,8 +1,11 @@
 package nl.tudelft.jpacman.board;
 
 
+import nl.tudelft.jpacman.sprite.Sprite;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test suite to confirm that {@link Unit}s correctly (de)occupy squares.
@@ -30,7 +33,11 @@ class OccupantTest {
      */
     @Test
     void noStartSquare() {
-        // TODO
+        //arrange
+        setUp();
+
+        //assert
+        assertFalse(unit.hasSquare());
     }
 
     /**
@@ -39,7 +46,15 @@ class OccupantTest {
      */
     @Test
     void testOccupy() {
-        // TODO
+        // arrange
+        setUp();
+        Square test_square = new BasicSquare();
+
+        //act
+        unit.occupy(test_square);
+
+        //assert
+        assertEquals(test_square, unit.getSquare());
     }
 
     /**
@@ -48,6 +63,15 @@ class OccupantTest {
      */
     @Test
     void testReoccupy() {
-        // TODO
+        // arrange
+        setUp();
+        Square test_square = new BasicSquare();
+
+        //act
+        unit.occupy(test_square);
+        unit.occupy(test_square);
+
+        //assert
+        assertEquals(test_square, unit.getSquare());
     }
 }

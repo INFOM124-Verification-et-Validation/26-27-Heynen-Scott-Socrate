@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 /**
@@ -26,7 +27,8 @@ class BoardTest {
      */
     @Test
     void verifyWidth() {
-        // TODO
+        //assert
+        assertEquals(MAX_WIDTH,board.getWidth());
     }
 
     /**
@@ -34,7 +36,8 @@ class BoardTest {
      */
     @Test
     void verifyHeight() {
-        // TODO
+        //assert
+        assertEquals(MAX_HEIGHT,board.getHeight());
     }
 
     /**
@@ -49,6 +52,7 @@ class BoardTest {
             "0, 1"
         })
     void testSquareAt(int x, int y) {
-        // TODO
+        //assert
+        assertEquals(grid[x][y],board.squareAt(x, y));
     }
 }

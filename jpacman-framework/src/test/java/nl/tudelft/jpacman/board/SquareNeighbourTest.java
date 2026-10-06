@@ -36,7 +36,14 @@ class SquareNeighbourTest {
      */
     @Test
     void testNoNeighbourByDefault() {
-        // TODO
+        //arrange
+        setUp();
+
+        //assert
+        assertNull(square.getSquareAt(Direction.NORTH));
+        assertNull(square.getSquareAt(Direction.EAST));
+        assertNull(square.getSquareAt(Direction.WEST));
+        assertNull(square.getSquareAt(Direction.SOUTH));
     }
 
     /**
@@ -45,7 +52,14 @@ class SquareNeighbourTest {
      */
     @Test
     void testLinkedNeighbour() {
-        // TODO
+        //arrange
+        setUp();
+
+        //act
+        square.link(neighbour,Direction.NORTH);
+
+        //assert
+        assertSame(square.getSquareAt(Direction.NORTH), neighbour);
     }
 
     /**
@@ -54,6 +68,14 @@ class SquareNeighbourTest {
      */
     @Test
     void testLinkIsOneWay() {
-        // TODO
+        //arrange
+        setUp();
+
+        //act
+        square.link(neighbour,Direction.NORTH);
+
+        //assert
+        assertSame(square.getSquareAt(Direction.NORTH), neighbour);
+        assertNotSame(neighbour.getSquareAt(Direction.NORTH), square);
     }
 }
