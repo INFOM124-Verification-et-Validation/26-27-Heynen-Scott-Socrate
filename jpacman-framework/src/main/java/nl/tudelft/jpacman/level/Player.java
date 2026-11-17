@@ -30,7 +30,7 @@ public class Player extends Unit {
     private final AnimatedSprite deathSprite;
 
     /**
-     * <code>true</code> iff this player is alive.
+     * <code>true</code> if this player is alive.
      */
     private boolean alive;
 
