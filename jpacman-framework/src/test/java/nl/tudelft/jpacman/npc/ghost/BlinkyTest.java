@@ -167,5 +167,37 @@ public class BlinkyTest {
         assertThat(aiDirection.get()).isEqualTo(Direction.NORTH);
     }
 
+    /**
+     * Asserts that Blinky correctly avoid an obstacle while going on Pac-Man
+     */
+    @Test
+    void testBlinkyAvoidObstacle() {
+        //arrange
+        List<String> map = new ArrayList<>();
+        map.add("##############");
+        map.add("#            #");
+        map.add("# P          #");
+        map.add("#            #");
+        map.add("####         #");
+        map.add("# S          #");
+        map.add("#            #");
+        map.add("##############");
+
+        PacManSprites pacManSprites = new PacManSprites();
+        GhostFactory ghostFactory = new GhostFactory(pacManSprites);
+        LevelFactory levelFactory = new LevelFactory(pacManSprites, ghostFactory);
+        BoardFactory boardFactory = new BoardFactory(pacManSprites);
+        GhostMapParser ghostMapParser = new GhostMapParser(levelFactory, boardFactory, ghostFactory);
+        Player player = new PlayerFactory(pacManSprites).createPacMan();
+        Level currentLevel = ghostMapParser.parseMap(map);
+        currentLevel.registerPlayer(player);
+        Blinky Blinky = Navigation.findUnitInBoard(Blinky.class, currentLevel.getBoard());
+
+        //act
+        Optional<Direction> aiDirection = Blinky.nextAiMove();
+
+        //assert
+        assertThat(aiDirection.get()).isNotIn(Direction.NORTH,Direction.WEST);
+    }
 
 }
